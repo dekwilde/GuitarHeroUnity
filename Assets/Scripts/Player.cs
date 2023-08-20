@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
 		SetLayerRecursive(transform,10+ playerNumber);
 
 		//playerInput = new PlayerInput(PlayerInput.Device.Xinput, playerNumber);
-		playerInput = new PlayerInput(PlayerInput.Device.Keyboard, playerNumber);
+		playerInput = new PlayerInput(PlayerInput.Device.Arduino, playerNumber, GetComponent<ArduinoManager>());
 
 		return output;
 	}

@@ -218,6 +218,8 @@ GameObject:
   m_Component:
   - component: {fileID: 46059196}
   - component: {fileID: 46059195}
+  - component: {fileID: 46059198}
+  - component: {fileID: 46059197}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -240,7 +242,7 @@ MonoBehaviour:
   playerNumber: 0
   playerInput:
     deviceId: 0
-    device: 0
+    device: 1
     fred: 
     fredState: 
     strumPressed: 1
@@ -248,6 +250,7 @@ MonoBehaviour:
     starPressed: 1
     tilt: 0
     whammy: 0
+    arduinoManager: {fileID: 0}
   layerMask: 0
   difficulty: 0
   noteCounter: {fileID: 1866698201}
@@ -332,6 +335,60 @@ Transform:
   m_Father: {fileID: 156009448}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &46059197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46059194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533c13e3a7ee22249ad31ded147578fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  customInput:
+  - keyName: BUTTON_01
+    positiveButtonKey: a
+    negativeButtonKey: b
+    keyCode: 97
+    isPressed: 0
+  - keyName: BUTTON_02
+    positiveButtonKey: c
+    negativeButtonKey: d
+    keyCode: 98
+    isPressed: 0
+  - keyName: BUTTON_03
+    positiveButtonKey: e
+    negativeButtonKey: f
+    keyCode: 99
+    isPressed: 0
+  - keyName: BUTTON_04
+    positiveButtonKey: g
+    negativeButtonKey: h
+    keyCode: 100
+    isPressed: 0
+  - keyName: BUTTON_05
+    positiveButtonKey: i
+    negativeButtonKey: j
+    keyCode: 101
+    isPressed: 0
+--- !u!114 &46059198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46059194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04cde7cce5b72764bb4d5dc089bc5854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 
 --- !u!1 &50366176
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,7 +1052,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1461054791}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
