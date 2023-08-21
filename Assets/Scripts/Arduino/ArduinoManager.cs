@@ -10,6 +10,13 @@ public class ArduinoManager : MonoBehaviour
 
     void Start() {
         OnReceived.AddListener(SetKeyEvent);
+        ResetLights();
+    }
+
+    public void ResetLights() {
+        foreach (CustomInput input in customInput) {
+            GetComponent<ArduinoSerial>().SendData(input.positiveButtonKey.ToString());
+        }
     }
 
     public void SetData(string code)
@@ -19,13 +26,13 @@ public class ArduinoManager : MonoBehaviour
         if(currentKey.positiveButtonKey == code)
         {
             OnReceived.Invoke(currentKey, true);
-            //GetComponent<ArduinoSerial>().SendData(currentKey.positiveLightKey.ToString());
+            GetComponent<ArduinoSerial>().SendData(currentKey.negativeButtonKey.ToString());
         } 
         else if(currentKey.negativeButtonKey == code)
         {
             Debug.Log("foi");
             OnReceived.Invoke(currentKey, false);
-           // GetComponent<ArduinoSerial>().SendData(currentKey.negativeLightKey.ToString());
+            GetComponent<ArduinoSerial>().SendData(currentKey.positiveButtonKey.ToString());
         }
     }
 

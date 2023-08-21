@@ -25,6 +25,12 @@ public class Player : MonoBehaviour
 	public uint nextBar;
 	public bool lastNoteHit = true; //mute guitar track?
 
+	public Session session;
+
+	void Start() {
+		session = FindObjectOfType<Session>();
+	}
+
 	[System.Serializable]
 	public class Pool
 	{
@@ -172,7 +178,12 @@ public class Player : MonoBehaviour
 
 	public void SpawnObjects(double tick, double beatsPerSecond)
 	{
-		if (index.note >= notes.Count) return; //end of song
+		if (index.note >= notes.Count) {
+			session.endScene.SetActive(true);
+			Debug.Log("Finalizou");
+			session.EndSession();
+			
+		} //end of song
 		Song.Note nextNote = notes[index.note];
 		double tenSecondsInTicks = beatsPerSecond * 3 * resolution;
 		if (nextNote.timestamp < tick + MetersToTickDistance(4f)) //spawn tick + 10 seconds?
