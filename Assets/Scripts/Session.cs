@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class Session : MonoBehaviour
 {
@@ -27,6 +29,11 @@ public class Session : MonoBehaviour
 	public double bpm, smoothBpm;
 	public float RenderingFadeDistance = 3;
 	public float RenderingFadeAmount = 1;
+	public EventSystem es;
+
+	public bool lightTestBool = true;
+
+	public GameObject endScene;
 
 	public class PlayerInfo
 	{
@@ -112,6 +119,7 @@ public class Session : MonoBehaviour
 
 	public void EndSession()
 	{
+		endScene.SetActive(true);
 		song = null;
 		smoothing = null;
 		playing = false;
@@ -234,5 +242,9 @@ public class Session : MonoBehaviour
 	{
 		if (song == null) return 0;
 		return (meters / speed * song.data.info.resolution);
+	}
+
+	public void ResetGame() {
+		 SceneManager.LoadScene(1);
 	}
 }

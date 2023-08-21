@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8343d98eb671150489c31e7e65ba0c20
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - VW Text
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 92ac6b46399ea754099469434bdcfcbe, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
