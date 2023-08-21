@@ -10,12 +10,28 @@ public class ArduinoManager : MonoBehaviour
 
     void Start() {
         OnReceived.AddListener(SetKeyEvent);
-        ResetLights();
+        LightsTest();
     }
 
     public void ResetLights() {
         foreach (CustomInput input in customInput) {
             GetComponent<ArduinoSerial>().SendData(input.positiveButtonKey.ToString());
+        }
+    }
+
+    public void LightsTest() {
+        StartCoroutine(LightLoop());
+    }
+
+    private IEnumerator LightLoop()
+    {
+       
+        for(int i = 0 ; i < customInput.Length; i++){
+            GetComponent<ArduinoSerial>().SendData(customInput[i].negativeButtonKey.ToString());
+        }
+        yield return new WaitForSeconds(5f);
+        for(int i = 0 ; i < customInput.Length; i++){
+            GetComponent<ArduinoSerial>().SendData(customInput[i].positiveButtonKey.ToString());
         }
     }
 

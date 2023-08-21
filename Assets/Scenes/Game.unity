@@ -827,6 +827,7 @@ MonoBehaviour:
   RenderingFadeDistance: 3
   RenderingFadeAmount: 1
   es: {fileID: 0}
+  lightTestBool: 1
   endScene: {fileID: 367672495}
 --- !u!4 &156009448
 Transform:
@@ -1432,7 +1433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 250.7266, y: 0}
+  m_AnchoredPosition: {x: 250.72656, y: 0}
   m_SizeDelta: {x: -501.4532, y: -764}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &349660020
@@ -3605,6 +3606,18 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 777624618}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -6535,7 +6548,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1974177368}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999821
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

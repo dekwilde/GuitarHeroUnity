@@ -31,6 +31,8 @@ public class Session : MonoBehaviour
 	public float RenderingFadeAmount = 1;
 	public EventSystem es;
 
+	public bool lightTestBool = true;
+
 	public GameObject endScene;
 
 	public class PlayerInfo
