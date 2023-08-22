@@ -35,7 +35,7 @@ public class ArduinoSerial : MonoBehaviour
 
     void StartStream()
     {
-        stream = new SerialPort(comPort, 9600);
+        stream = new SerialPort(comPort, 19200);
         stream.Open(); //Open the Serial Stream.
         stream.ReadTimeout = 1;
         //InvokeRepeating("ReadData", .5f, .1f);

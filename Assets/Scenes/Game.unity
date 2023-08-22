@@ -830,7 +830,7 @@ MonoBehaviour:
   previousTime: 0
   visualOffset: -100
   tick: 0
-  smoothTick: 0
+  smoothTick: 2
   starPowerDuration: 0
   bpm: 0
   smoothBpm: 0
@@ -6558,7 +6558,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1974177368}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999976
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

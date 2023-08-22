@@ -20,13 +20,13 @@ public class ArduinoManager : MonoBehaviour
         if(currentKey.positiveButtonKey == code)
         {
             OnReceived.Invoke(currentKey, true);
-            GetComponent<ArduinoSerial>().SendData(currentKey.negativeButtonKey.ToString());
+            GetComponent<ArduinoSerial>().SendData(currentKey.negativeLightKey.ToString());
         } 
         else if(currentKey.negativeButtonKey == code)
         {
             Debug.Log("foi");
             OnReceived.Invoke(currentKey, false);
-            GetComponent<ArduinoSerial>().SendData(currentKey.positiveButtonKey.ToString());
+            GetComponent<ArduinoSerial>().SendData(currentKey.positiveLightKey.ToString());
         }
     }
 

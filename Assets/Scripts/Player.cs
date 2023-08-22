@@ -301,7 +301,7 @@ public class Player : MonoBehaviour
 			Vector3 pos = barInstance.myTransform.localPosition;
 			pos.z = (float)distanceInMeters;
 			barInstance.myTransform.localPosition = pos;
-			if (tickDistance < 0)
+			if (tickDistance < -2)
 			{
 				willRemoveBars.Add(barInstance);
 			}
@@ -429,7 +429,7 @@ public class Player : MonoBehaviour
 				}
 			}
 
-			if ((nextLine.timestamp - smoothTick) < -window)
+			if ((nextLine.timestamp + smoothTick) < -window)
 			{
 				nextLine.fail = true;
 				//Debug.Log("Too late. note: " + nextLine.timestamp + ". strum: " + smoothTick);
