@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using System.IO;
 using System.IO.Ports;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class ArduinoSerial : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class ArduinoSerial : MonoBehaviour
     string strReceived;
     string comPort;
     ArduinoManager arduinoManager;
-    public string texto;
+    //
     private void Start()
     {
         arduinoManager = GetComponent<ArduinoManager>();
@@ -57,6 +58,7 @@ public class ArduinoSerial : MonoBehaviour
     {
         char receivedChar = (char)code;
         string receivedString = receivedChar.ToString();
+        //texto.text = receivedString;
         arduinoManager.SetData(receivedString);
         //OnReceived.Invoke(receivedString);
         //Debug.Log("received: " + receivedString);
@@ -90,6 +92,8 @@ public class ArduinoSerial : MonoBehaviour
             }
             */
             stream.WriteLine(data);
+        } else {
+            StartStream();
         }
     }
 }
