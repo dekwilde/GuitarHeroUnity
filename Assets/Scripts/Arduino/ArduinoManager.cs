@@ -17,22 +17,28 @@ public class ArduinoManager : MonoBehaviour
     {
         FindInput(code);
         
-        if(currentKey.positiveButtonKey == code)
-        {
-            OnReceived.Invoke(currentKey, true);
-            GetComponent<ArduinoSerial>().SendData(currentKey.negativeLightKey.ToString());
-        } 
-        else if(currentKey.negativeButtonKey == code)
-        {
-            Debug.Log("foi");
-            OnReceived.Invoke(currentKey, false);
-            GetComponent<ArduinoSerial>().SendData(currentKey.positiveLightKey.ToString());
+        if(currentKey != null) {
+            if(currentKey.positiveButtonKey == code)
+            {
+                OnReceived.Invoke(currentKey, true);
+                //GetComponent<ArduinoSerial>().SendData(currentKey.negativeLightKey.ToString());
+            } 
+            else if(currentKey.negativeButtonKey == code)
+            {
+                Debug.Log("foi");
+                OnReceived.Invoke(currentKey, false);
+               // GetComponent<ArduinoSerial>().SendData(currentKey.positiveLightKey.ToString());
+            }
         }
+        currentKey = null;
     }
 
     void FindInput(string code){
         foreach (CustomInput input in customInput) {
-            if(input.positiveButtonKey == code || input.negativeButtonKey == code){
+            if(input.positiveButtonKey == code){
+                currentKey = input;
+            }
+            if(input.negativeButtonKey == code){
                 currentKey = input;
             }
         }
@@ -96,6 +102,9 @@ public class CustomInput{
     [Space(5)]
     public string negativeLightKey;
     [Space(10)]
+
+    public bool lightOn = true;
+    public bool lightOff = true;
 
     [Header("Keyboard Button")]
     [Space(5)]

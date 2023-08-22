@@ -301,7 +301,7 @@ public class Player : MonoBehaviour
 			Vector3 pos = barInstance.myTransform.localPosition;
 			pos.z = (float)distanceInMeters;
 			barInstance.myTransform.localPosition = pos;
-			if (tickDistance < -2)
+			if (tickDistance < 0)
 			{
 				willRemoveBars.Add(barInstance);
 			}
@@ -337,7 +337,7 @@ public class Player : MonoBehaviour
 
 			//check if notes are available
 			//only create line when it is a bit closer 
-			if (activeNotes.Count > 0&& (activeNotes[0].timestamp<(smoothTick+(window*2))))
+			if (activeNotes.Count > 0 && (activeNotes[0].timestamp<(smoothTick+(window*2))))
 			{	
 				nextLine.note.Add(activeNotes[0]); //add next note to line
 				nextLine.timestamp = activeNotes[0].timestamp;
@@ -408,12 +408,12 @@ public class Player : MonoBehaviour
 				{
 					//Debug.Log("Strum Pressed");
 					//check if inside window
-					if (Mathf.Abs((float)(nextLine.timestamp - smoothTick)) <= window)
+					if (Mathf.Abs((float)(nextLine.timestamp - smoothTick)) <= window + 2f)
 					{
 						//Debug.Log("Inside of window! correct colors yet: " + correctColors);
 						//check if double strum pressed, this is a fail
-						if (nextLine.strumPressed) nextLine.fail = true;
-						nextLine.strumPressed = true;
+						//if (nextLine.strumPressed) nextLine.fail = true;
+						//nextLine.strumPressed = true;
 						if (correctColors && !nextLine.fail) nextLine.succes = true;
 					}
 					else
@@ -429,7 +429,7 @@ public class Player : MonoBehaviour
 				}
 			}
 
-			if ((nextLine.timestamp + smoothTick) < -window)
+			if ((nextLine.timestamp - smoothTick) < -window)
 			{
 				nextLine.fail = true;
 				//Debug.Log("Too late. note: " + nextLine.timestamp + ". strum: " + smoothTick);
