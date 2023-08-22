@@ -73,6 +73,7 @@ public class ArduinoSerial : MonoBehaviour
 
     public void SendData(string data)
     {
+        Debug.Log(data);
         if (stream.IsOpen)
         {
             //stream.Write(data);

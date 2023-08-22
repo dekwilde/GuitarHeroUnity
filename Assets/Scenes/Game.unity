@@ -355,26 +355,36 @@ MonoBehaviour:
   - keyName: BUTTON_01
     positiveButtonKey: a
     negativeButtonKey: b
+    positiveLightKey: 1
+    negativeLightKey: 2
     keyCode: 97
     isPressed: 0
   - keyName: BUTTON_02
     positiveButtonKey: c
     negativeButtonKey: d
+    positiveLightKey: 3
+    negativeLightKey: 4
     keyCode: 98
     isPressed: 0
   - keyName: BUTTON_03
     positiveButtonKey: e
     negativeButtonKey: f
+    positiveLightKey: 5
+    negativeLightKey: 6
     keyCode: 99
     isPressed: 0
   - keyName: BUTTON_04
     positiveButtonKey: g
     negativeButtonKey: h
+    positiveLightKey: 7
+    negativeLightKey: 8
     keyCode: 100
     isPressed: 0
   - keyName: BUTTON_05
     positiveButtonKey: i
     negativeButtonKey: j
+    positiveLightKey: 9
+    negativeLightKey: 10
     keyCode: 101
     isPressed: 0
 --- !u!114 &46059198
@@ -1433,7 +1443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 250.72656, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -501.4532, y: -764}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &349660020
@@ -6548,7 +6558,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1974177368}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999821
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

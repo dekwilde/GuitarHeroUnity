@@ -13,28 +13,6 @@ public class ArduinoManager : MonoBehaviour
         LightsTest();
     }
 
-    public void ResetLights() {
-        foreach (CustomInput input in customInput) {
-            GetComponent<ArduinoSerial>().SendData(input.positiveButtonKey.ToString());
-        }
-    }
-
-    public void LightsTest() {
-        StartCoroutine(LightLoop());
-    }
-
-    private IEnumerator LightLoop()
-    {
-       
-        for(int i = 0 ; i < customInput.Length; i++){
-            GetComponent<ArduinoSerial>().SendData(customInput[i].negativeButtonKey.ToString());
-        }
-        yield return new WaitForSeconds(5f);
-        for(int i = 0 ; i < customInput.Length; i++){
-            GetComponent<ArduinoSerial>().SendData(customInput[i].positiveButtonKey.ToString());
-        }
-    }
-
     public void SetData(string code)
     {
         FindInput(code);
@@ -66,6 +44,38 @@ public class ArduinoManager : MonoBehaviour
             input.PressButton(p);
         }
     }
+
+    public void LightsTest() {
+        StartCoroutine(LightLoopOn());   
+    }
+
+    private IEnumerator LightLoopOn()
+    {   
+        int count = 0;
+        while(count < customInput.Length) {
+            yield return new WaitForEndOfFrame();
+            GetComponent<ArduinoSerial>().SendData(customInput[count].negativeLightKey.ToString());
+            count++;
+            if(count >= customInput.Length) {
+                Debug.Log("Desligando...");
+                StartCoroutine(LightLoopOf()); 
+            }
+        }
+    }
+
+    private IEnumerator LightLoopOf()
+    {   
+        int count = 0;
+        while(count < customInput.Length) {
+            yield return new WaitForEndOfFrame();
+            GetComponent<ArduinoSerial>().SendData(customInput[count].positiveLightKey.ToString());
+            count++;
+        }
+    }
+
+    public void SendData(string code) {
+        GetComponent<ArduinoSerial>().SendData(code);
+    }
 }
 
 // Classe do input personalizado
@@ -79,6 +89,12 @@ public class CustomInput{
     public string positiveButtonKey;
     [Space(5)]
     public string negativeButtonKey;
+    [Space(10)]
+    [Header("Lights Codes")]
+    [Space(5)]
+    public string positiveLightKey;
+    [Space(5)]
+    public string negativeLightKey;
     [Space(10)]
 
     [Header("Keyboard Button")]

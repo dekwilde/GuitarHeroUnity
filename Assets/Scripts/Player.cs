@@ -179,6 +179,7 @@ public class Player : MonoBehaviour
 	public void SpawnObjects(double tick, double beatsPerSecond)
 	{
 		if (index.note >= notes.Count) {
+			GetComponent<ArduinoManager>().LightsTest();
 			session.endScene.SetActive(true);
 			Debug.Log("Finalizou");
 			session.EndSession();
@@ -490,4 +491,6 @@ public class Player : MonoBehaviour
 	{
 		return (meters / speed * resolution);
 	}
+
+	
 }
