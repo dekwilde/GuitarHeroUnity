@@ -13,7 +13,7 @@ public class ArduinoSerial : MonoBehaviour
     string strReceived;
     string comPort;
     ArduinoManager arduinoManager;
-    public string test;
+    public string texto;
     private void Start()
     {
         arduinoManager = GetComponent<ArduinoManager>();

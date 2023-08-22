@@ -105,20 +105,10 @@ public class PlayerInput
         if (input.isPressed)
         {
             fredState[index] = true;
-            if(input.lightOn) {
-                input.lightOn = false;
-                input.lightOff = true;
-                arduinoManager.SendData(input.negativeLightKey.ToString());
-            }
         }
         else
         {
             fredState[index] = false;
-            if(input.lightOff) {
-                input.lightOff = false;
-                input.lightOn = true;
-                arduinoManager.SendData(input.positiveLightKey.ToString());
-            }
         }
 
         fred[index] = fredState[index];
