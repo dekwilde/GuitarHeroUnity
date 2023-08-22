@@ -408,10 +408,11 @@ public class Player : MonoBehaviour
 				{
 					//Debug.Log("Strum Pressed");
 					//check if inside window
-					if (Mathf.Abs((float)(nextLine.timestamp - smoothTick)) <= window + 2f)
+					if (Mathf.Abs((float)(nextLine.timestamp - smoothTick)) <= window)
 					{
 						//Debug.Log("Inside of window! correct colors yet: " + correctColors);
 						//check if double strum pressed, this is a fail
+						//TODO:
 						//if (nextLine.strumPressed) nextLine.fail = true;
 						//nextLine.strumPressed = true;
 						if (correctColors && !nextLine.fail) nextLine.succes = true;
