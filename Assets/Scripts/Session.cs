@@ -29,9 +29,7 @@ public class Session : MonoBehaviour
 	public double bpm, smoothBpm;
 	public float RenderingFadeDistance = 3;
 	public float RenderingFadeAmount = 1;
-	public EventSystem es;
-
-	public bool lightTestBool = true;
+	public ArduinoManager arduinoManager;
 
 	public GameObject endScene;
 

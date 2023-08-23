@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
 		SetLayerRecursive(transform,10+ playerNumber);
 
 		//playerInput = new PlayerInput(PlayerInput.Device.Xinput, playerNumber);
-		playerInput = new PlayerInput(PlayerInput.Device.Arduino, playerNumber, GetComponent<ArduinoManager>());
+		playerInput = new PlayerInput(PlayerInput.Device.Arduino, playerNumber, session.arduinoManager);
 
 		return output;
 	}
@@ -179,7 +179,7 @@ public class Player : MonoBehaviour
 	public void SpawnObjects(double tick, double beatsPerSecond)
 	{
 		if (index.note >= notes.Count) {
-			GetComponent<ArduinoManager>().LightsTest();
+			//GetComponent<ArduinoManager>().LightsTest();
 			session.endScene.SetActive(true);
 			Debug.Log("Finalizou");
 			session.EndSession();

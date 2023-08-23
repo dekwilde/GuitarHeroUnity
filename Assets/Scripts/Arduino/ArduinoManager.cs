@@ -10,27 +10,24 @@ public class ArduinoManager : MonoBehaviour
 
     void Start() {
         OnReceived.AddListener(SetKeyEvent);
-        LightsTest();
+        StartCoroutine(StartLights());
     }
 
     public void SetData(string code)
     {
         FindInput(code);
         
-        if(currentKey != null) {
-            if(currentKey.positiveButtonKey == code)
-            {
-                OnReceived.Invoke(currentKey, true);
-                //GetComponent<ArduinoSerial>().SendData(currentKey.negativeLightKey.ToString());
-            } 
-            else if(currentKey.negativeButtonKey == code)
-            {
-                Debug.Log("foi");
-                OnReceived.Invoke(currentKey, false);
-               // GetComponent<ArduinoSerial>().SendData(currentKey.positiveLightKey.ToString());
-            }
+        if(currentKey.positiveButtonKey == code)
+        {
+            OnReceived.Invoke(currentKey, true);
+            //GetComponent<ArduinoSerial>().SendData(currentKey.negativeLightKey.ToString());
+        } 
+        else if(currentKey.negativeButtonKey == code)
+        {
+            OnReceived.Invoke(currentKey, false);
+            // GetComponent<ArduinoSerial>().SendData(currentKey.positiveLightKey.ToString());
         }
-        currentKey = null;
+        //currentKey = null;
     }
 
     void FindInput(string code){
@@ -59,7 +56,7 @@ public class ArduinoManager : MonoBehaviour
     {   
         int count = 0;
         while(count < customInput.Length) {
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(0.1f);
             GetComponent<ArduinoSerial>().SendData(customInput[count].negativeLightKey.ToString());
             count++;
             if(count >= customInput.Length) {
@@ -69,11 +66,17 @@ public class ArduinoManager : MonoBehaviour
         }
     }
 
+    private IEnumerator StartLights()
+    {   
+        yield return new WaitForSeconds(1);
+        LightsTest();
+    }
+
     private IEnumerator LightLoopOf()
     {   
         int count = 0;
         while(count < customInput.Length) {
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(0.1f);
             GetComponent<ArduinoSerial>().SendData(customInput[count].positiveLightKey.ToString());
             count++;
         }
@@ -117,6 +120,5 @@ public class CustomInput{
         } else {
             isPressed = false;
         }
-        
     }
 }

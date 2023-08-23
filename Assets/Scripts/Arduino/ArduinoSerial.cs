@@ -13,7 +13,7 @@ public class ArduinoSerial : MonoBehaviour
     SerialPort stream;
     string strReceived;
     string comPort;
-    ArduinoManager arduinoManager;
+    public ArduinoManager arduinoManager;
     //
     private void Start()
     {
@@ -48,7 +48,7 @@ public class ArduinoSerial : MonoBehaviour
         {
             try
             {
-                ReadDataInt(stream.ReadByte()); 
+                ReadDataInt(stream.ReadByte());
             }
             catch (System.Exception) { }
         }
@@ -93,7 +93,7 @@ public class ArduinoSerial : MonoBehaviour
             */
             stream.WriteLine(data);
         } else {
-            StartStream();
+            //StartStream();
         }
     }
 }
