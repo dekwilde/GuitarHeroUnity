@@ -218,15 +218,13 @@ GameObject:
   m_Component:
   - component: {fileID: 46059196}
   - component: {fileID: 46059195}
-  - component: {fileID: 46059198}
-  - component: {fileID: 46059197}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &46059195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,60 +334,6 @@ Transform:
   m_Father: {fileID: 156009448}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &46059197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46059194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 533c13e3a7ee22249ad31ded147578fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnReceived:
-    m_PersistentCalls:
-      m_Calls: []
-  customInput:
-  - keyName: BUTTON_01
-    positiveButtonKey: a
-    negativeButtonKey: b
-    keyCode: 97
-    isPressed: 0
-  - keyName: BUTTON_02
-    positiveButtonKey: c
-    negativeButtonKey: d
-    keyCode: 98
-    isPressed: 0
-  - keyName: BUTTON_03
-    positiveButtonKey: e
-    negativeButtonKey: f
-    keyCode: 99
-    isPressed: 0
-  - keyName: BUTTON_04
-    positiveButtonKey: g
-    negativeButtonKey: h
-    keyCode: 100
-    isPressed: 0
-  - keyName: BUTTON_05
-    positiveButtonKey: i
-    negativeButtonKey: j
-    keyCode: 101
-    isPressed: 0
---- !u!114 &46059198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46059194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04cde7cce5b72764bb4d5dc089bc5854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  test: 
 --- !u!1 &50366176
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,6 +701,8 @@ GameObject:
   m_Component:
   - component: {fileID: 156009448}
   - component: {fileID: 156009447}
+  - component: {fileID: 156009450}
+  - component: {fileID: 156009449}
   m_Layer: 0
   m_Name: Session
   m_TagString: Untagged
@@ -798,7 +744,7 @@ MonoBehaviour:
   sessionRenderer: {fileID: 1636736913}
   noteRenderer: {fileID: 946565215}
   playing: 0
-  speed: 0.4
+  speed: 0.2
   prefabs:
   - {fileID: 1352675138}
   - {fileID: 89394651}
@@ -820,14 +766,13 @@ MonoBehaviour:
   previousTime: 0
   visualOffset: -100
   tick: 0
-  smoothTick: 0
+  smoothTick: 2
   starPowerDuration: 0
   bpm: 0
   smoothBpm: 0
   RenderingFadeDistance: 3
   RenderingFadeAmount: 1
-  es: {fileID: 0}
-  lightTestBool: 1
+  arduinoManager: {fileID: 156009449}
   endScene: {fileID: 367672495}
 --- !u!4 &156009448
 Transform:
@@ -850,6 +795,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &156009449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156009446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533c13e3a7ee22249ad31ded147578fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  customInput:
+  - keyName: BUTTON_01
+    positiveButtonKey: a
+    negativeButtonKey: b
+    positiveLightKey: 1
+    negativeLightKey: 2
+    lightOn: 0
+    lightOff: 0
+    keyCode: 97
+    isPressed: 0
+  - keyName: BUTTON_02
+    positiveButtonKey: c
+    negativeButtonKey: d
+    positiveLightKey: 3
+    negativeLightKey: 4
+    lightOn: 1
+    lightOff: 1
+    keyCode: 98
+    isPressed: 0
+  - keyName: BUTTON_03
+    positiveButtonKey: e
+    negativeButtonKey: f
+    positiveLightKey: 5
+    negativeLightKey: 6
+    lightOn: 1
+    lightOff: 1
+    keyCode: 99
+    isPressed: 0
+  - keyName: BUTTON_04
+    positiveButtonKey: g
+    negativeButtonKey: h
+    positiveLightKey: 7
+    negativeLightKey: 8
+    lightOn: 1
+    lightOff: 1
+    keyCode: 100
+    isPressed: 0
+  - keyName: BUTTON_05
+    positiveButtonKey: i
+    negativeButtonKey: j
+    positiveLightKey: 9
+    negativeLightKey: 10
+    lightOn: 1
+    lightOff: 1
+    keyCode: 101
+    isPressed: 0
+--- !u!114 &156009450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156009446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04cde7cce5b72764bb4d5dc089bc5854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arduinoManager: {fileID: 156009449}
 --- !u!1 &209715270
 GameObject:
   m_ObjectHideFlags: 0
@@ -6006,10 +6025,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -6548,7 +6567,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1974177368}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999821
+  m_Size: 0.9999869
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
 		SetLayerRecursive(transform,10+ playerNumber);
 
 		//playerInput = new PlayerInput(PlayerInput.Device.Xinput, playerNumber);
-		playerInput = new PlayerInput(PlayerInput.Device.Arduino, playerNumber, GetComponent<ArduinoManager>());
+		playerInput = new PlayerInput(PlayerInput.Device.Arduino, playerNumber, session.arduinoManager);
 
 		return output;
 	}
@@ -179,6 +179,7 @@ public class Player : MonoBehaviour
 	public void SpawnObjects(double tick, double beatsPerSecond)
 	{
 		if (index.note >= notes.Count) {
+			//GetComponent<ArduinoManager>().LightsTest();
 			session.endScene.SetActive(true);
 			Debug.Log("Finalizou");
 			session.EndSession();
@@ -336,7 +337,7 @@ public class Player : MonoBehaviour
 
 			//check if notes are available
 			//only create line when it is a bit closer 
-			if (activeNotes.Count > 0&& (activeNotes[0].timestamp<(smoothTick+(window*2))))
+			if (activeNotes.Count > 0 && (activeNotes[0].timestamp<(smoothTick+(window*2))))
 			{	
 				nextLine.note.Add(activeNotes[0]); //add next note to line
 				nextLine.timestamp = activeNotes[0].timestamp;
@@ -411,8 +412,9 @@ public class Player : MonoBehaviour
 					{
 						//Debug.Log("Inside of window! correct colors yet: " + correctColors);
 						//check if double strum pressed, this is a fail
-						if (nextLine.strumPressed) nextLine.fail = true;
-						nextLine.strumPressed = true;
+						//TODO:
+						//if (nextLine.strumPressed) nextLine.fail = true;
+						//nextLine.strumPressed = true;
 						if (correctColors && !nextLine.fail) nextLine.succes = true;
 					}
 					else
@@ -490,4 +492,6 @@ public class Player : MonoBehaviour
 	{
 		return (meters / speed * resolution);
 	}
+
+	
 }

@@ -6,14 +6,15 @@ using UnityEngine.Events;
 using System.IO;
 using System.IO.Ports;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class ArduinoSerial : MonoBehaviour
 {
     SerialPort stream;
     string strReceived;
     string comPort;
-    ArduinoManager arduinoManager;
-    public string test;
+    public ArduinoManager arduinoManager;
+    //
     private void Start()
     {
         arduinoManager = GetComponent<ArduinoManager>();
@@ -35,7 +36,7 @@ public class ArduinoSerial : MonoBehaviour
 
     void StartStream()
     {
-        stream = new SerialPort(comPort, 9600);
+        stream = new SerialPort(comPort, 19200);
         stream.Open(); //Open the Serial Stream.
         stream.ReadTimeout = 1;
         //InvokeRepeating("ReadData", .5f, .1f);
@@ -47,7 +48,7 @@ public class ArduinoSerial : MonoBehaviour
         {
             try
             {
-                ReadDataInt(stream.ReadByte()); 
+                ReadDataInt(stream.ReadByte());
             }
             catch (System.Exception) { }
         }
@@ -57,6 +58,7 @@ public class ArduinoSerial : MonoBehaviour
     {
         char receivedChar = (char)code;
         string receivedString = receivedChar.ToString();
+        //texto.text = receivedString;
         arduinoManager.SetData(receivedString);
         //OnReceived.Invoke(receivedString);
         //Debug.Log("received: " + receivedString);
@@ -73,6 +75,7 @@ public class ArduinoSerial : MonoBehaviour
 
     public void SendData(string data)
     {
+        Debug.Log(data);
         if (stream.IsOpen)
         {
             //stream.Write(data);
@@ -89,6 +92,8 @@ public class ArduinoSerial : MonoBehaviour
             }
             */
             stream.WriteLine(data);
+        } else {
+            //StartStream();
         }
     }
 }
