@@ -179,11 +179,7 @@ public class Player : MonoBehaviour
 	public void SpawnObjects(double tick, double beatsPerSecond)
 	{
 		if (index.note >= notes.Count) {
-			//GetComponent<ArduinoManager>().LightsTest();
-			session.endScene.SetActive(true);
-			Debug.Log("Finalizou");
-			session.EndSession();
-			
+			//GetComponent<ArduinoManager>().LightsTest();			
 		} //end of song
 		Song.Note nextNote = notes[index.note];
 		double tenSecondsInTicks = beatsPerSecond * 3 * resolution;
@@ -441,7 +437,7 @@ public class Player : MonoBehaviour
 			//Check if next line is succes or fail
 			if (nextLine.fail)
 			{
-				//Debug.Log("MISS");
+				Debug.Log("MISS");
 				for (int i = 0; i < nextLine.note.Count; ++i)
 				{
 					willRemove.Add(nextLine.note[i]);
@@ -453,7 +449,8 @@ public class Player : MonoBehaviour
 			}
 			if (nextLine.succes&&!nextLine.fail)
 			{
-				//Debug.Log("HIT");
+				Debug.Log("HIT");
+				session.SetScore();
 				for (int i = 0; i < nextLine.note.Count; ++i)
 				{
 					willRemove.Add(nextLine.note[i]);

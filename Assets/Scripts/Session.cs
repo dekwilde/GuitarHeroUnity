@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Session : MonoBehaviour
 {
@@ -30,8 +31,40 @@ public class Session : MonoBehaviour
 	public float RenderingFadeDistance = 3;
 	public float RenderingFadeAmount = 1;
 	public ArduinoManager arduinoManager;
+	public Text scoreText;
+	public Transform mensagemTransform;
+	public GameObject mensagem;
+	public string[] mensagens;
+
+	public int score;
+	public int combo;
+
+	public bool endGame = false;
+
+	public Animator scoreBar;
 
 	public GameObject endScene;
+
+	public EventToInvoke eventStart;
+
+	public void SetScore() {
+		combo++;
+		score++;
+		scoreText.text = "" + score;
+		if(combo >= 30) {
+			combo = 0;
+			int sel = Random.Range(0, mensagens.Length);
+			GameObject obj = Instantiate(mensagem, mensagemTransform.position, Quaternion.identity, mensagemTransform);
+			obj.GetComponent<SetUpMensagem>().SetUp(mensagens[sel]);
+		}
+	}
+
+	public void EndGame() {
+		endGame = true;
+		endScene.SetActive(true);
+		Debug.Log("Finalizou");
+		EndSession();
+	}
 
 	public class PlayerInfo
 	{
@@ -199,6 +232,8 @@ public class Session : MonoBehaviour
 				guitarSource.Play();
 				rhythmSource.Play();
 				songSource.Play();
+				scoreBar.SetBool("Show", true);
+				eventStart.ToInvoke();
 			}
 		}
 	}
