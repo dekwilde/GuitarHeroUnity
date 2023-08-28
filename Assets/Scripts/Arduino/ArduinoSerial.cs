@@ -93,7 +93,7 @@ public class ArduinoSerial : MonoBehaviour
             */
             stream.WriteLine(data);
         } else {
-            //StartStream();
+            StartStream();
         }
     }
 }
