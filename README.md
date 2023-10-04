@@ -1,3 +1,8 @@
+
+Instalação do Arduino driver:
+https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads
+
+
 # GuitarHeroUnity
 Open Source - Guitar Hero fan game made in Unity.
 
